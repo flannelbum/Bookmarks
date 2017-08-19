@@ -1,0 +1,14 @@
+name: ${name}
+version: ${version}
+description: ${description}
+author: ${author}
+website: ${url}
+
+main: ${mainClass}
+
+commands:
+  bookmarks:
+    description: Gives the bookmark book
+    usage: /bookmark or /bm
+    aliases: [bm,bookmark,ecbmc]
+permissions: {}

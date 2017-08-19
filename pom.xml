@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eirinncraft.Bookmarks</groupId>
+	<artifactId>Bookmarks</artifactId>
+	<!-- Version is used in plugin.yml -->
+	<version>0.1.0</version>
+	<packaging>jar</packaging>
+
+	<!-- Plugin Information -->
+	<!-- Name, Description, and URL are used in plugin.yml -->
+	<name>Bookmarks</name>
+	<description>Bookmarks plugin</description>
+	<url>http://eirinncraft.net</url>
+
+	<developers>
+		<developer>
+			<name>flannelbum</name>
+			<url>http://eirinncraft.net</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<!-- Author and MainClass are used in plugin.yml -->
+		<author>flannelbum</author>
+		<mainClass>org.eirinncraft.Bookmarks.Bookmarks</mainClass>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<!--Spigot API -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.12-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--Bukkit API -->
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>1.12-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Book API - https://github.com/upperlevel/spigot-book-api/wiki -->
+		<dependency>
+			<groupId>xyz.upperlevel.spigot.book</groupId>
+			<artifactId>spigot-book-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.16</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<defaultGoal>clean install</defaultGoal>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!-- Keeping filtering at true here reduces plugin.yml redundancy! -->
+				<filtering>true</filtering>
+				<includes>
+					<include>plugin.yml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!-- Keep filtering at false for other resources to prevent bad magic -->
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>plugin.yml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<!-- Run shade goal on package phase -->
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
