@@ -21,17 +21,9 @@ Players that place a named diamond block create a Marker from that block of diam
 Markers require 4 blocks of air (with some exceptions) above the top of the Marker for a player teleport to work.  Tripwire, pressure plates, and still water are all valid blocks that can still be "on top" of the Marker and will not prevent a player teleport.      
 
 
-### v0.1.0
-
-Initial commit/pre-release
-
-To-do list:
-* more performance testing / further code-path optimizations and cleanup
-* add admin book that will allow staff to inspect all bookmarks
-* finalize permission nodes and the way the librarian issues/registers books
-
 #### Compiled Dependencies
 This Bookmarks project packages and utilizes upperlevel's excellent [spigot-book-api](https://github.com/upperlevel/spigot-book-api)
+Also using [lombok](https://projectlombok.org/) to help with some boilerplate.
 
-#### Pull Requests welcome!
+#### Pull Requests/feedback is welcome!
 
