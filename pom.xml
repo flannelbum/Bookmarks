@@ -4,7 +4,7 @@
 	<groupId>org.eirinncraft.Bookmarks</groupId>
 	<artifactId>Bookmarks</artifactId>
 	<!-- Version is used in plugin.yml -->
-	<version>0.1.1</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<!-- Plugin Information -->
