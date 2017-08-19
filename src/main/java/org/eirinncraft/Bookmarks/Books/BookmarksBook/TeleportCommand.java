@@ -19,10 +19,6 @@ public class TeleportCommand extends BookCommand {
 	/**
 	 * The Teleport Command!
 	 * 
-	 * @param plugin
-	 * @param librarian
-	 * @param uuid
-	 * @param marker
 	 */
 	public TeleportCommand(Bookmarks plugin, UUID uuid, Marker marker) {
 		super(plugin, uuid, "TeleportCommand");

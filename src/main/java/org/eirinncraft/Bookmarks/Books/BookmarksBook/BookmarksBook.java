@@ -31,8 +31,9 @@ public class BookmarksBook implements Book {
 	 * other books can instantiate with or without a constructor
 	 * as our Librarian.Book object is just an interface.
 	 * 
-	 * @param plugin
-	 * @param uuid
+	 * However, if the book should execute commands, plugin and uuid
+	 * are required.
+	 * 
 	 */
 	public BookmarksBook(Bookmarks plugin, UUID uuid) {
 		this.plugin = plugin;
@@ -88,7 +89,6 @@ public class BookmarksBook implements Book {
 				
 				// First line - "Markername"
 				
-				
 				// space out the up arrow on the first bookmark
 				if( i == 0 ){
 					plugin.debug(DebugType.BOOK, "adding content to page: blankarrowup");
@@ -110,6 +110,8 @@ public class BookmarksBook implements Book {
 						BookUtil.TextBuilder.of( 
 								// Some light string manipulation to prevent wordwrapping in the book
 								//  "%-50s" basically means "widen field to 50 chars and left align it"
+								// we then only use the first 18 chars.
+								// This should give the player's mouse more to click on for short names
 								String.format("%-50s", marker.getMarkername()).substring(0, 18)
 								)
     					.onHover(BookUtil.HoverAction.showText(

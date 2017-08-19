@@ -36,7 +36,6 @@ public class ViewOthersBook implements Book {
 		List<BaseComponent[]> pages = new ArrayList<BaseComponent[]>();		
 	
 		// Walk through players with this bookmark
-		//  TODO: This needs refactoring in order to display multiple pages.
 		
 		int i = 0;
 		PageBuilder page = new BookUtil.PageBuilder();

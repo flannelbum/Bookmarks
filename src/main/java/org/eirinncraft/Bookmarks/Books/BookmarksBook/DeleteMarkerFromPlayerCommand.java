@@ -53,7 +53,7 @@ public class DeleteMarkerFromPlayerCommand extends BookCommand {
 		
 		// only reopen if there are players to show
 		if( playerswithmap.size() > 1 ){
-			//reopen book in 1 tick as we get a null pointer when we give it immediately back to the player
+			//reopen book in 1 tick
 			// ... this feels like a hack ...
 			new BukkitRunnable() {
 	            @Override
