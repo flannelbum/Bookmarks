@@ -23,6 +23,7 @@ Markers require 4 blocks of air (with some exceptions) above the top of the Mark
 
 #### Compiled Dependencies
 This Bookmarks project packages and utilizes upperlevel's excellent [spigot-book-api](https://github.com/upperlevel/spigot-book-api)
+
 Also using [lombok](https://projectlombok.org/) to help with some boilerplate.
 
 #### Pull Requests/feedback is welcome!
