@@ -251,8 +251,15 @@ public class BookmarksBook implements Book {
 		// and needed to generate lore without generating the full book
 		// as lore is used in event listeners and handlers
 		BookMeta book_meta = (BookMeta) book.getItemMeta();				
-		book_meta.setDisplayName(ChatColor.AQUA + "Bookmark_dev");
-		book_meta.setAuthor("Erinncraft Bookworm");
+		book_meta.setDisplayName(ChatColor.AQUA + "Bookmarks");
+		
+		plugin.getConfig().addDefault("bookauthor", "The Server Librarian");
+		plugin.getConfig().options().copyDefaults(true);
+		plugin.saveConfig();
+		String author = plugin.getConfig().getString("bookauthor");
+		plugin.saveConfig();
+		
+		book_meta.setAuthor(author);
 		
 		book_meta.setLore(getLore());
 		
