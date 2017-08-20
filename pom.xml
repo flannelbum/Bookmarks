@@ -32,8 +32,9 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
+		
 	</repositories>
-	
+
 	<dependencies>
 		<!--Spigot API -->
 		<dependency>
@@ -42,6 +43,7 @@
 			<version>1.12-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!--Bukkit API -->
 		<dependency>
 			<groupId>org.bukkit</groupId>
@@ -57,6 +59,7 @@
 			<version>1.2</version>
 		</dependency>
 
+		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
