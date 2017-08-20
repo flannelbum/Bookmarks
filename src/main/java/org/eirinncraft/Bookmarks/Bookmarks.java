@@ -55,10 +55,7 @@ public class Bookmarks extends JavaPlugin {
 			return true;
 		return false;
 	}
-	
-	
-	
-	
+		
 	public Database getDB() {
 		if (db == null) {
 			db = new SQLite(this);
