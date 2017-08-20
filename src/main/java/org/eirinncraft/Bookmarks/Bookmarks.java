@@ -45,11 +45,8 @@ public class Bookmarks extends JavaPlugin {
 	}
 	
 	public Debugger debug(DebugType type, String message){
-		if(type == null || message == null){
-			return debugger;
-		} else {
+		if(type != null && message != null)
 			debugger.log(type, message);	
-			}
 		return debugger;
 	}
 	
