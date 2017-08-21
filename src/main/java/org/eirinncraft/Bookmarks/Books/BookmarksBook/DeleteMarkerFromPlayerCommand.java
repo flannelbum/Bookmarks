@@ -22,7 +22,8 @@ public class DeleteMarkerFromPlayerCommand extends BookCommand {
 	private Marker marker;
 	
 	public DeleteMarkerFromPlayerCommand(Bookmarks plugin, UUID uuid, Marker marker, Integer bookmarksid, UUID removeforuuid) {
-		super(plugin, uuid, "DeleteMarkerFromPlayerCommand");
+		super(plugin, uuid);
+		
 		this.plugin = plugin;
 		this.uuid = uuid;
 		this.marker = marker;
@@ -30,6 +31,11 @@ public class DeleteMarkerFromPlayerCommand extends BookCommand {
 		this.removeforuuid = removeforuuid;
 	}
 
+	@Override
+	public String getCommandName() {
+		return "DeleteMarkerFromPlayerCommand";
+	}
+	
 	@Override
 	public void execute() {
 		plugin.debug(DebugType.BOOK_COMMAND, "Executing delete marker from player command");
@@ -65,5 +71,4 @@ public class DeleteMarkerFromPlayerCommand extends BookCommand {
 	        // no more runnable
 		}
 	}
-
 }

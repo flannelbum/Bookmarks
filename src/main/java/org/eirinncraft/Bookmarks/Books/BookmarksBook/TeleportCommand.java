@@ -16,17 +16,17 @@ public class TeleportCommand extends BookCommand {
 	private UUID uuid;
 	private Marker marker;
 	
-	/**
-	 * The Teleport Command!
-	 * 
-	 */
 	public TeleportCommand(Bookmarks plugin, UUID uuid, Marker marker) {
-		super(plugin, uuid, "TeleportCommand");
+		super(plugin, uuid);
 		
 		this.plugin = plugin;
 		this.uuid = uuid;
 		this.marker = marker;
-		
+	}
+	
+	@Override
+	public String getCommandName() {
+		return "TeleportCommand";
 	}
 
 	@Override
@@ -72,6 +72,7 @@ public class TeleportCommand extends BookCommand {
 	}
 	
 	
+	
 	private boolean safeToWarp( Location location ){
 
 		// only work on your own copy of the passed arg
@@ -103,5 +104,4 @@ public class TeleportCommand extends BookCommand {
 		// made it out of the loop so we should be safe to warp to.
 		return true;
 	}
-	
 }

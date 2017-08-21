@@ -17,10 +17,16 @@ public class ToggleDebugCommand extends BookCommand {
 	private UUID uuid;
 	
 	public ToggleDebugCommand(Bookmarks plugin, UUID uuid, DebugType debugType) {
-		super(plugin, uuid, "ToggleDebug");
+		super(plugin, uuid);
+		
 		this.debugType = debugType;
 		this.plugin = plugin;
 		this.uuid = uuid;
+	}
+	
+	@Override
+	public String getCommandName() {
+		return "ToggleDebug - " + debugType.toString();
 	}
 
 	@Override

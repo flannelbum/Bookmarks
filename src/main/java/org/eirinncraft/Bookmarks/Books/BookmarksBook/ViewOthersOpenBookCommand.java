@@ -19,14 +19,19 @@ public class ViewOthersOpenBookCommand extends BookCommand{
 	private HashMap<UUID,Integer> playerswith;
 	
 	public ViewOthersOpenBookCommand(Bookmarks plugin, UUID uuid, Marker marker, HashMap<UUID,Integer> playerswith) {
-		super(plugin, uuid, "ViewOthersOpenBookCommand");
+		super(plugin, uuid);
+		
 		this.plugin = plugin;
 		this.uuid = uuid;
 		this.marker = marker;
 		this.playerswith = playerswith;
-		
 	}
 
+	@Override
+	public String getCommandName() {
+		return "ViewOthersOpenBookCommand";
+	}
+	
 	@Override
 	public void execute() {
 		Player player = plugin.getServer().getPlayer( uuid );

@@ -21,22 +21,18 @@ public class ClickSortCommand extends BookCommand {
 	private Marker marker;
 	private SortDirection sortdirection;
 	
-	/**
-	 * The ClickSort Command!
-	 * 
-	 * @param plugin
-	 * @param uuid
-	 * @param marker
-	 * @param sortdirection
-	 */
 	public ClickSortCommand(Bookmarks plugin, UUID uuid, Marker marker, SortDirection sortdirection) {
-		super(plugin, uuid, "ClickSort");
+		super(plugin, uuid);
 		
 		this.plugin = plugin;
 		this.uuid = uuid;
 		this.marker = marker;
 		this.sortdirection = sortdirection;
-		
+	}
+	
+	@Override
+	public String getCommandName() {
+		return "ClickSortCommand";
 	}
 
 	@Override
@@ -52,13 +48,14 @@ public class ClickSortCommand extends BookCommand {
 		}
 		
 		
-		// get the target bookmark
-		
 		/////////////////////////// DANGER //////////////////////////// 
 		// We are trusting that this command won't be asked to move  //
 		//  a bookmark where it can't go                             //
 		//  (ex: up 1 when it's already at the top)                  //
 		///////////////////////////////////////////////////////////////
+
+		// get the target bookmark
+		
 		Bookmark targetBookmark = null;
 		if( sortdirection.equals(SortDirection.UP) )
 			targetBookmark = list.get( currentBookmark.getPlayersort() - 1 );
@@ -84,9 +81,6 @@ public class ClickSortCommand extends BookCommand {
 		plugin.debug(DebugType.BOOK_COMMAND, "Reopening book");
 		
 		
-//		BookUtil.openPlayer( plugin.getServer().getPlayer( uuid ), plugin.getLibrarian().getBookmarksBook( uuid ).getBook() );
-		
-		
 		//reopen book in 1 tick as we get a null pointer when we give it immediately back to the player
 		// ... this feels like a hack ...
 		new BukkitRunnable() {
@@ -98,23 +92,4 @@ public class ClickSortCommand extends BookCommand {
         // no more runnable
 				
 	}
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
