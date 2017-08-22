@@ -1,12 +1,16 @@
 package org.eirinncraft.Bookmarks.SupportingObjects;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.eirinncraft.Bookmarks.Bookmarks;
@@ -430,9 +434,49 @@ public class MarkerManager {
 
 
 
+	/**
+	 * Holograms are just armor stands with some stuff set to them
+	 * They are Entities/LivingEntities.  Their IDs do not have persistence.
+	 * 
+	 * This method will first search for the existence of an entity that is an armor stand
+	 * and will check if a custom name is visible.  If this is true, the entity is removed
+	 * 
+	 * Otherwise, a new entity is created provided the area of the world it should
+	 * at is loaded.  
+	 * 
+	 * @param marker
+	 */
+	public void toggleHolo(Marker marker) {
 
-
-
+		Entity entity = null;
+		
+		// let's try searching to see if there is a stand already
+		Collection<Entity> lostandfound = marker.getLocation().getWorld().getNearbyEntities( marker.getLocation() , 2, 3, 2);
+		for( Entity entityfound : lostandfound ) 
+			if( entityfound.getType().equals(EntityType.ARMOR_STAND) && entityfound.isCustomNameVisible() ) 
+				entity = entityfound;
+ 
+		if( entity != null)
+			entity.remove();
+		else {
+			Location location = marker.getLocation();
+			String name = marker.getMarkername();
+			
+			// tweak location
+			location.setX( location.getX() +.5);
+			location.setY( location.getY() + 2);
+			location.setZ( location.getZ() +.5);
+			
+			ArmorStand stand = (ArmorStand) location.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
+			stand.setMarker(true);
+			stand.setVisible(false);
+			stand.setGravity(false);
+			stand.setCustomName(ChatColor.AQUA + name);
+			stand.setCustomNameVisible(true);
+			stand.setRemoveWhenFarAway(false);
+		}
+			
+	}
 
 
 

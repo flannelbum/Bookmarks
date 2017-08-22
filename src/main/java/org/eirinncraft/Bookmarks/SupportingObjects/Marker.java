@@ -79,6 +79,11 @@ public class Marker {
 			owneruuid = plugin.getMarkerManager().getPlayerUUIDfromID( playerOwnerid );
 		return owneruuid;
 	}
+	
+	public void toggleHolo() {
+		plugin.getMarkerManager().toggleHolo(this);
+	}
+	
 
 	public void delete() {
 		plugin.getMarkerManager().deleteMarker( markerid );

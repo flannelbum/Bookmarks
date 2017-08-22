@@ -41,6 +41,15 @@ public class ViewOthersBook implements Book {
 		PageBuilder page = new BookUtil.PageBuilder();
 		page.add(new TextComponent( ChatColor.DARK_AQUA + marker.getMarkername()));
 		page.newLine(); i++;
+		page.add(
+				BookUtil.TextBuilder.of("* Toggle Hologram")
+				.color(ChatColor.DARK_GREEN)
+				.onHover( BookUtil.HoverAction.showText( "Click to toggle the hologram for: " + marker.getMarkername() ))
+				.onClick( BookUtil.ClickAction.runCommand( new ToggleMarkerHoloCommand(plugin, uuid, marker).getCommand() ))
+				.build()
+				);
+		page.newLine(); i++;
+		page.newLine(); i++;
 
 		for( Entry<UUID, Integer> entry : playerswith.entrySet() ){
 			if( !entry.getKey().equals(uuid) ){
@@ -48,7 +57,7 @@ public class ViewOthersBook implements Book {
 							BookUtil.TextBuilder.of(" " + plugin.getMarkerManager().lookupPlayernameFromUUID( entry.getKey() ))
 							.color(ChatColor.DARK_RED)
 							.style(ChatColor.ITALIC)
-							.onHover( BookUtil.HoverAction.showText("Click to remove " + plugin.getMarkerManager().lookupPlayernameFromUUID( entry.getKey() ) 
+							.onHover( BookUtil.HoverAction.showText( "Click to remove " + plugin.getMarkerManager().lookupPlayernameFromUUID( entry.getKey() ) 
 									+ "\nfrom: " + ChatColor.AQUA + marker.getMarkername() ))
 							.onClick( BookUtil.ClickAction.runCommand( new DeleteMarkerFromPlayerCommand(plugin, uuid, marker, entry.getValue(), entry.getKey()).getCommand() ))
 							.build()

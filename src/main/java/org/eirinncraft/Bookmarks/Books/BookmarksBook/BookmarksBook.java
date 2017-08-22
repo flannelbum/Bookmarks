@@ -159,11 +159,23 @@ public class BookmarksBook implements Book {
 						}
 					}
 					
-					
+					String viewotherscommand = new ViewOthersOpenBookCommand(plugin, uuid, marker, playerswithmap).getCommand();
 					if( others == "" ){
 					page.add( 
+							
+							BookUtil.TextBuilder.of(
+									"~You "
+									)
+							.onHover(BookUtil.HoverAction.showText(
+	    							"Click to manage: " + ChatColor.AQUA + marker.getMarkername()	))
+	    					.onClick(BookUtil.ClickAction.runCommand( viewotherscommand ))
+	    					.color(ChatColor.DARK_GREEN)
+	    					.style(ChatColor.ITALIC)
+	    					.build()
+							);
+					page.add(
 							BookUtil.TextBuilder.of( 
-									"~You            " // space added to allow for larger mouse "target" in book
+									"            " // space added to allow for larger mouse "target" in book
 									)
 	    					.onHover(BookUtil.HoverAction.showText(
 	    							"Teleport to: " + ChatColor.AQUA + marker.getMarkername() + ChatColor.RESET
@@ -176,14 +188,14 @@ public class BookmarksBook implements Book {
 							
 							);
 					} else {
-						String viewotherscommand = new ViewOthersOpenBookCommand(plugin, uuid, marker, playerswithmap).getCommand();
+						viewotherscommand = new ViewOthersOpenBookCommand(plugin, uuid, marker, playerswithmap).getCommand();
 						
 						page.add(
 								BookUtil.TextBuilder.of(
 										"~You "
 										)
 								.onHover(BookUtil.HoverAction.showText(
-		    							"Click to view/remove other player(s) from: " + ChatColor.AQUA + marker.getMarkername()	))
+		    							"Click to manage: " + ChatColor.AQUA + marker.getMarkername()	))
 		    					.onClick(BookUtil.ClickAction.runCommand( viewotherscommand ))
 		    					.color(ChatColor.DARK_GREEN)
 		    					.style(ChatColor.ITALIC)
@@ -194,8 +206,10 @@ public class BookmarksBook implements Book {
 										others
 										)
 								.onHover(BookUtil.HoverAction.showText(
-		    							"Click to view/remove other player(s) from: " + ChatColor.AQUA + marker.getMarkername()	))
-		    					.onClick(BookUtil.ClickAction.runCommand( viewotherscommand ))
+		    							"Teleport to: " + ChatColor.AQUA + marker.getMarkername() + ChatColor.RESET
+		    							+ "\n(" + marker.getWorldName() +") X:" + marker.getX() + " Y:" + marker.getY() + " Z:" + marker.getZ()
+		    							))
+		    					.onClick(BookUtil.ClickAction.runCommand( tpcommandstring ))
 		    					.color(ChatColor.DARK_GREEN)
 		    					.style(ChatColor.ITALIC)
 		    					.build()

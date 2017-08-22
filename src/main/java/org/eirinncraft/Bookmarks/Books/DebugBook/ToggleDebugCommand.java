@@ -26,7 +26,7 @@ public class ToggleDebugCommand extends BookCommand {
 	
 	@Override
 	public String getCommandName() {
-		return "ToggleDebug - " + debugType.toString();
+		return "ToggleDebug";
 	}
 
 	@Override
