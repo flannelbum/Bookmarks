@@ -267,6 +267,13 @@ public class MarkerManager {
 		for( Entry<UUID, Integer> entry : playersort.entrySet() )
 			deleteMarkerFromPlayer(entry.getValue(), entry.getKey());
 		
+		// remove any holograms we can find for the marker
+		Marker marker = markerMap.get( markerid );
+		Collection<Entity> lostandfound = marker.getLocation().getWorld().getNearbyEntities( marker.getLocation() , 2, 3, 2);
+		for( Entity entityfound : lostandfound ) 
+			if( entityfound.getType().equals(EntityType.ARMOR_STAND) && entityfound.isCustomNameVisible() ) 
+				entityfound.remove();
+		
 		// remove the marker object and remove it from the db
 		markerMap.remove( markerid );
 		plugin.getDB().removeMarker( markerid );
