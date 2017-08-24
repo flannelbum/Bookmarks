@@ -260,19 +260,19 @@ public class MarkerManager {
 	public void deleteMarker(int markerid) {
 		plugin.debug(DebugType.MARKERMANAGER, "deleteMarker(" + markerid + ")" );		
 		
-		// Get all players that have this marker and their current bookmarks id for it.
-		HashMap<UUID,Integer> playersort = plugin.getDB().getPlayersAndBookmarkIDsforMarker( markerid );
-		
-		// loop through the list and loop player bookmarks to remove markerid 
-		for( Entry<UUID, Integer> entry : playersort.entrySet() )
-			deleteMarkerFromPlayer(entry.getValue(), entry.getKey());
-		
 		// remove any holograms we can find for the marker
 		Marker marker = markerMap.get( markerid );
 		Collection<Entity> lostandfound = marker.getLocation().getWorld().getNearbyEntities( marker.getLocation() , 2, 3, 2);
 		for( Entity entityfound : lostandfound ) 
 			if( entityfound.getType().equals(EntityType.ARMOR_STAND) && entityfound.isCustomNameVisible() ) 
 				entityfound.remove();
+
+		// Get all players that have this marker and their current bookmarks id for it.
+		HashMap<UUID,Integer> playersort = plugin.getDB().getPlayersAndBookmarkIDsforMarker( markerid );
+		
+		// loop through the list and loop player bookmarks to remove markerid 
+		for( Entry<UUID, Integer> entry : playersort.entrySet() )
+			deleteMarkerFromPlayer(entry.getValue(), entry.getKey());
 		
 		// remove the marker object and remove it from the db
 		markerMap.remove( markerid );
