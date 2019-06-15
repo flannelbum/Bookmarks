@@ -1,7 +1,7 @@
 # Bookmarks
 
 ### Bookmarks is a Minecraft Spigot plugin that provides players an easy way to create, share, and manage warp locations.
-Tested with Minecraft version 1.12.1 and _should_ work from 1.9+
+Bookmarks version 0.1.3 is tested with Minecraft version 1.12.1 and _should_ work from 1.9 up to 1.12.1
 
 Once installed, use the **/bookmarks** or **/bm** command to summon a Bookmark book.  The first page of the book reads: 
 
