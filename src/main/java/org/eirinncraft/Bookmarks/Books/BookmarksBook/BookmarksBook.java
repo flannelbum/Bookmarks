@@ -297,12 +297,18 @@ public class BookmarksBook implements Book {
 	@Override
 	public List<String> getLore() {
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "All punched or created");
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "warp points.");
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "Reader only sees their");
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "bookmarks. Bookmarks are");
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "removed from all books");
-		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "when warp is broken.");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "All punched or created");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "warp points.");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "Reader only sees their");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "bookmarks. Bookmarks are");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "removed from all books");
+//		lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "when warp is broken.");
+		lore.add("All punched or created");
+		lore.add("warp points.");
+		lore.add("Reader only sees their");
+		lore.add("bookmarks. Bookmarks are");
+		lore.add("removed from all books");
+		lore.add("when warp is broken.");
 
 		return lore;
 	}

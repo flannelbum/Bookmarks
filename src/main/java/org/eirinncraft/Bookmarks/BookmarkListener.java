@@ -11,7 +11,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.ItemStack;
 import org.eirinncraft.Bookmarks.SupportingObjects.Debugger.DebugType;
 import org.eirinncraft.Bookmarks.SupportingObjects.Marker;
 
@@ -94,19 +94,19 @@ public class BookmarkListener implements Listener {
 	public void onPlayerInteractEvent(PlayerInteractEvent e) {
 		
 		Player player = e.getPlayer();
-		PlayerInventory pinv = player.getInventory();
+		ItemStack mainHandItem = player.getInventory().getItemInMainHand();
 
 		// Handle if a player touches a diamond block with a Written Book in their hand
 		if ( e.getAction().equals(Action.LEFT_CLICK_BLOCK) && 
-				pinv.getItemInMainHand() != null )
+				mainHandItem != null )
 			
-			if ( pinv.getItemInMainHand().getType().equals(Material.WRITTEN_BOOK) && 
-					pinv.getItemInMainHand().hasItemMeta() )
+			if ( mainHandItem.getType().equals(Material.WRITTEN_BOOK) && 
+					mainHandItem.hasItemMeta() )
 				
-				if ( pinv.getItemInMainHand().getItemMeta().hasLore() && 
-						pinv.getItemInMainHand().getItemMeta().getLore().equals( plugin.getLibrarian().getBookmarksBook(null).getLore() )){
+				if ( mainHandItem.getItemMeta().hasLore() && 
+						mainHandItem.getItemMeta().getLore().equals( plugin.getLibrarian().getBookmarksBook(null).getLore() )){
 					
-					plugin.getMarkerManager().touchedBookmark(e.getPlayer(), e.getClickedBlock().getLocation());
+					plugin.getMarkerManager().touchedBookmark(player, e.getClickedBlock().getLocation());
 				
 				}
 					
@@ -116,18 +116,14 @@ public class BookmarkListener implements Listener {
 		if ( e.getAction().equals(Action.RIGHT_CLICK_AIR) ||
 				e.getAction().equals(Action.RIGHT_CLICK_BLOCK) )
 			
-			if ( pinv.getItemInMainHand().getType().equals(Material.WRITTEN_BOOK) && 
-					pinv.getItemInMainHand().hasItemMeta() )
+			if ( mainHandItem.getType().equals(Material.WRITTEN_BOOK) && mainHandItem.hasItemMeta() )
 				
-				if ( pinv.getItemInMainHand().getItemMeta().hasLore() && 
-						pinv.getItemInMainHand().getItemMeta().getLore().equals( plugin.getLibrarian().getBookmarksBook(null).getLore() )){
-					
+				if ( mainHandItem.getItemMeta().hasLore() && mainHandItem.getItemMeta().getLore().equals( plugin.getLibrarian().getBookmarksBook(null).getLore() )){
+										
 					e.setCancelled(true); // we cancel the event as, otherwise, the player would see the wrong book.
 					BookUtil.openPlayer(e.getPlayer(), plugin.getLibrarian().getBookmarksBook( e.getPlayer().getUniqueId() ).getBook() );
 					
-				}		
+				} 
+		
 	}
-	
-	
 }
-

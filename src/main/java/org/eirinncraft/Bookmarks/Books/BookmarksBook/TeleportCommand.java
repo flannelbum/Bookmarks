@@ -85,14 +85,15 @@ public class TeleportCommand extends BookCommand {
 			
 			// skip over some "whitelisted" stuff
 			//  but return false otherwise
+			
 			switch( checkloc.getBlock().getType() ){
 				case AIR: break;
 				case DIAMOND_BLOCK: break;
-				case STATIONARY_WATER: break;
-				case GOLD_PLATE: break;
-				case IRON_PLATE: break;
-				case STONE_PLATE: break;
-				case WOOD_PLATE: break;
+				case WATER: break;
+//				case GOLD_PLATE: break;
+//				case IRON_PLATE: break;
+//				case STONE_PLATE: break;
+//				case WOOD_PLATE: break;
 				case TRIPWIRE: break;
 				default: 
 					return false;
