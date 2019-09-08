@@ -4,7 +4,7 @@
 	<groupId>org.eirinncraft.Bookmarks</groupId>
 	<artifactId>Bookmarks</artifactId>
 	<!-- Version is used in plugin.yml -->
-	<version>0.1.4-SNAPSHOT</version>
+	<version>0.1.4</version>
 	<packaging>jar</packaging>
 
 	<!-- Plugin Information -->
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>xyz.upperlevel.spigot.book</groupId>
 			<artifactId>spigot-book-api</artifactId>
-			<version>1.2</version>
+			<version>1.3</version>
 		</dependency>
 
 		<!-- lombok -->
