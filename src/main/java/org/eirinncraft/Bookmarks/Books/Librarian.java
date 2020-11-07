@@ -7,9 +7,11 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.eirinncraft.Bookmarks.Bookmarks;
 import org.eirinncraft.Bookmarks.Books.BookmarksBook.BookmarksBook;
 import org.eirinncraft.Bookmarks.Books.DebugBook.DebugBook;
+import org.eirinncraft.Bookmarks.SupportingObjects.Debugger;
 import org.eirinncraft.Bookmarks.SupportingObjects.Debugger.DebugType;
 
 
@@ -42,9 +44,8 @@ public class Librarian {
 		return new DebugBook(plugin, uuid);
 	}
 
-	
-	
-	
+
+
 	
 	/**
 	 * Interface for Book objects the Librarian manages.
@@ -56,6 +57,7 @@ public class Librarian {
 	public interface Book {
 		public abstract ItemStack getBook();
 		public abstract List<String> getLore();
+		public abstract ItemStack setAuthorAndTitle(ItemStack book);
 	}
 
 	
@@ -140,7 +142,7 @@ public class Librarian {
 	/*****************************
 	 * Wrapper for unregisterCommand(String uuid).  Sometimes it's easier/quicker to just pass the player object.
 	 * 
-	 * @param uuid
+	 * @param player
 	 ***/
 	public void unregisterCommands(Player player) {
 		unregisterCommands( player.getUniqueId() );

@@ -12,6 +12,7 @@ import org.eirinncraft.Bookmarks.Bookmarks;
 import org.eirinncraft.Bookmarks.Books.Librarian.Book;
 import org.eirinncraft.Bookmarks.Books.BookmarksBook.ClickSortCommand.SortDirection;
 import org.eirinncraft.Bookmarks.SupportingObjects.Bookmark;
+import org.eirinncraft.Bookmarks.SupportingObjects.Debugger;
 import org.eirinncraft.Bookmarks.SupportingObjects.Debugger.DebugType;
 import org.eirinncraft.Bookmarks.SupportingObjects.Marker;
 
@@ -268,7 +269,7 @@ public class BookmarksBook implements Book {
 		// as lore is used in event listeners and handlers
 		BookMeta book_meta = (BookMeta) book.getItemMeta();				
 		book_meta.setDisplayName(ChatColor.AQUA + "Bookmarks");
-		
+		book_meta.setTitle("Bookmarks");
 		plugin.getConfig().addDefault("bookauthor", "The Server Librarian");
 		plugin.getConfig().options().copyDefaults(true);
 		plugin.saveConfig();
@@ -312,5 +313,7 @@ public class BookmarksBook implements Book {
 
 		return lore;
 	}
+	@Override
+	public ItemStack setAuthorAndTitle(ItemStack book) {return null;}
 
 }

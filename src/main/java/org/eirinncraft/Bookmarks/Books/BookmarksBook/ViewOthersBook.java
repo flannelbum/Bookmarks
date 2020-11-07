@@ -8,8 +8,10 @@ import java.util.UUID;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.eirinncraft.Bookmarks.Bookmarks;
 import org.eirinncraft.Bookmarks.Books.Librarian.Book;
+import org.eirinncraft.Bookmarks.SupportingObjects.Debugger;
 import org.eirinncraft.Bookmarks.SupportingObjects.Marker;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -74,13 +76,22 @@ public class ViewOthersBook implements Book {
 		
 		pages.add(page.build());
 		
-		ItemStack book = BookUtil.writtenBook().pages(pages).build();
+		ItemStack book = setAuthorAndTitle(BookUtil.writtenBook().pages(pages).build());
 		return book;
 	}
 
 	@Override
-	public List<String> getLore() {
-		return null;
+	public List<String> getLore() { return null; }
+
+	@Override
+	public ItemStack setAuthorAndTitle(ItemStack book) {
+		BookMeta book_meta = (BookMeta) book.getItemMeta();
+		book_meta.setTitle("Bookmarks");
+		String author = plugin.getConfig().getString("bookauthor");
+		book_meta.setAuthor(author);
+		book.setItemMeta(book_meta);
+		plugin.debug(Debugger.DebugType.BOOK, "so it is written!  FINAL book_meta.getPageCount() = " + book_meta.getPageCount());
+		return book;
 	}
 
 }
